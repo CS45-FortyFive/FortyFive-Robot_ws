@@ -21,8 +21,8 @@ $ wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/instal
 $ sudo apt-get install ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kinetic-teleop-twist-keyboard ros-kinetic-laser-proc ros-kinetic-rgbd-launch ros-kinetic-depthimage-to-laserscan ros-kinetic-rosserial-arduino ros-kinetic-rosserial-python ros-kinetic-rosserial-server ros-kinetic-rosserial-client ros-kinetic-rosserial-msgs
 
 $ cd ~/catkin_ws/src/
-$ git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
-$ git clone -b kinetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
+$ git clone https://github.com/CS45-FortyFive/FortyFive-Robot/fortyfive_robot_msgs.git
+$ git clone https://github.com/CS45-FortyFive/FortyFive-Robot/fortyfive_robot
 $ cd ~/catkin_ws && catkin_make
 
 ```
