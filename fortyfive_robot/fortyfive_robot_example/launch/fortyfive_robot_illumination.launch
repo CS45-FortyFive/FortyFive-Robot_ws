@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="fortyfive_robot_example" type="fortyfive_robot_illumination" name="fortyfive_robot_illumination" output="screen">
+  </node>
+</launch>
