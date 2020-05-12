@@ -1,6 +1,3 @@
-# FortyFive-Robot
-Final Repo for Capstone Project
-
 Following Instructions adapted from TurtleBot3 Manual. For more detailed explanation:
 http://emanual.robotis.com/docs/en/platform/turtlebot3/
 
@@ -21,8 +18,8 @@ $ wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/instal
 $ sudo apt-get install ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kinetic-teleop-twist-keyboard ros-kinetic-laser-proc ros-kinetic-rgbd-launch ros-kinetic-depthimage-to-laserscan ros-kinetic-rosserial-arduino ros-kinetic-rosserial-python ros-kinetic-rosserial-server ros-kinetic-rosserial-client ros-kinetic-rosserial-msgs
 
 $ cd ~/catkin_ws/src/
-$ git clone https://github.com/CS45-FortyFive/FortyFive-Robot/fortyfive_robot_msgs.git
-$ git clone https://github.com/CS45-FortyFive/FortyFive-Robot/fortyfive_robot
+$ git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+$ git clone -b kinetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
 $ cd ~/catkin_ws && catkin_make
 
 ```
@@ -45,7 +42,7 @@ roscore
 
 On robot PC run following command on your terminal
 ```
-$ roslaunch turtlebot3_bringup turtlebot3_robot.launch
+$ roslaunch fortyfive_robotbringup fortyfive_robot_robot.launch
 ```
 
 You Should see the following output on your terminal
@@ -56,28 +53,28 @@ SUMMARY
 PARAMETERS
  * /rosdistro: kinetic
  * /rosversion: 1.12.13
- * /turtlebot3_core/baud: 115200
- * /turtlebot3_core/port: /dev/ttyACM0
- * /turtlebot3_core/tf_prefix:
- * /turtlebot3_lds/frame_id: base_scan
- * /turtlebot3_lds/port: /dev/ttyUSB0
+ * /fortyfive_robot_core/baud: 115200
+ * /fortyfive_robot_core/port: /dev/ttyACM0
+ * /fortyfive_robot_core/tf_prefix:
+ * /fortyfive_robot_lds/frame_id: base_scan
+ * /fortyfive_robot_lds/port: /dev/ttyUSB0
 
 NODES
   /
-    turtlebot3_core (rosserial_python/serial_node.py)
-    turtlebot3_diagnostics (turtlebot3_bringup/turtlebot3_diagnostics)
-    turtlebot3_lds (hls_lfcd_lds_driver/hlds_laser_publisher)
+    fortyfive_robot_core (rosserial_python/serial_node.py)
+    fortyfive_robot_diagnostics (fortyfive_robot_bringup/fortyfive_robot_diagnostics)
+    fortyfive_robot_lds (hls_lfcd_lds_driver/hlds_laser_publisher)
 
 ROS_MASTER_URI=http://192.168.1.2:11311
 
-process[turtlebot3_core-1]: started with pid [14198]
-process[turtlebot3_lds-2]: started with pid [14199]
-process[turtlebot3_diagnostics-3]: started with pid [14200]
+process[fortyfive_robot_core-1]: started with pid [14198]
+process[fortyfive_robot_lds-2]: started with pid [14199]
+process[fortyfive_robot_diagnostics-3]: started with pid [14200]
 [INFO] [1531306690.947198]: ROS Serial Python Node
 [INFO] [1531306691.000143]: Connecting to /dev/ttyACM0 at 115200 baud
 [INFO] [1531306693.522019]: Note: publish buffer size is 1024 bytes
-[INFO] [1531306693.525615]: Setup publisher on sensor_state [turtlebot3_msgs/SensorState]
-[INFO] [1531306693.544159]: Setup publisher on version_info [turtlebot3_msgs/VersionInfo]
+[INFO] [1531306693.525615]: Setup publisher on sensor_state [fortyfive_robot_msgs/SensorState]
+[INFO] [1531306693.544159]: Setup publisher on version_info [fortyfive_robot_msgs/VersionInfo]
 [INFO] [1531306693.620722]: Setup publisher on imu [sensor_msgs/Imu]
 [INFO] [1531306693.642319]: Setup publisher on cmd_vel_rc100 [geometry_msgs/Twist]
 [INFO] [1531306693.687786]: Setup publisher on odom [nav_msgs/Odometry]
@@ -87,7 +84,7 @@ process[turtlebot3_diagnostics-3]: started with pid [14200]
 [INFO] [1531306695.979057]: Setup publisher on /tf [tf/tfMessage]
 [INFO] [1531306696.007135]: Note: subscribe buffer size is 1024 bytes
 [INFO] [1531306696.009083]: Setup subscriber on cmd_vel [geometry_msgs/Twist]
-[INFO] [1531306696.040047]: Setup subscriber on sound [turtlebot3_msgs/Sound]
+[INFO] [1531306696.040047]: Setup subscriber on sound [fortyfive_robot_msgs/Sound]
 [INFO] [1531306696.069571]: Setup subscriber on motor_power [std_msgs/Bool]
 [INFO] [1531306696.096364]: Setup subscriber on reset [std_msgs/Empty]
 [INFO] [1531306696.390979]: Setup TF on Odometry [odom]
@@ -105,8 +102,8 @@ process[turtlebot3_diagnostics-3]: started with pid [14200]
 ### 3.1 Run SLAM Nodes
 On your Remote PC open a new terminal and run following commands.
 ```
-$ export TURTLEBOT3_MODEL=waffle
-$ roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping
+$ export FORTYFIVE_ROBOT_MODEL=waffle
+$ roslaunch fortyfive_robot_slam fortyfive_robot_slam.launch slam_methods:=gmapping
 ```
 
 The slam_methods options include gmapping, cartographer, hector, karto, frontier_exploration, and you can choose one of them. But for our project we will stick with gmapping.
@@ -114,8 +111,8 @@ The slam_methods options include gmapping, cartographer, hector, karto, frontier
 ### 3.2 Control Robot over Terminal
 On your Remote PC open a new terminal and run following commands.
 ```
-$ export TURTLEBOT3_MODEL=${TB3_MODEL}
-$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+$ export FORTYFIVE_ROBOT_MODEL=${TB3_MODEL}
+$ roslaunch fortyfive_robot_teleop fortyfive_robot_teleop_key.launch
 ```
 
 You should see following output:
@@ -148,13 +145,13 @@ On your remote PC run following command on your terminal
 
 On robot PC run following command on your terminal
 ```
-$ roslaunch turtlebot3_bringup turtlebot3_robot.launch
+$ roslaunch fortyfive_robot_bringup fortyfive_robot_robot.launch
 ```
 
 On your remote PC run following command on your terminal:
 ```
-$ export TURTLEBOT3_MODEL=${TB3_MODEL}
-$ roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
+$ export FORTYFIVE_ROBOT_MODEL=${TB3_MODEL}
+$ roslaunch fortyfive_robot_navigation fortyfive_robot_navigation.launch map_file:=$HOME/map.yaml
 ```
 
 ### 4.2 Set Navigation Goal
@@ -276,7 +273,7 @@ $ roscore
 ```
 On the Robot PC run following command on your terminal:
 ```
-$ roslaunch turtlebot3_bringup turtlebot3_robot.launch
+$ roslaunch fortyfive_robot_bringup fortyfive_robot_robot.launch
 ```
 On the Remote PC run following command on your terminal:
 ```
