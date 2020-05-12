@@ -20,7 +20,6 @@ $ sudo apt-get install ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kinetic-
 $ cd ~
 $ git clone https://github.com/CS45-FortyFive/FortyFive-Robot_ws.git
 $ cd FortyFive-Robot_ws
-$ cd catkin init
 $ catkin_make
 $ echo "source ~/FortyFive-Robot_ws/devel/setup.bash" >> ~/.bashrc # Adds workspace to search path
 ```
