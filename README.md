@@ -42,7 +42,7 @@ roscore
 
 On robot PC run following command on your terminal
 ```
-$ roslaunch fortyfive_robotbringup fortyfive_robot_robot.launch
+$ roslaunch fortyfive_robot_bringup fortyfive_robot_robot.launch
 ```
 
 You Should see the following output on your terminal
