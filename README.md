@@ -20,7 +20,6 @@ $ sudo apt-get install ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kinetic-
 $ cd ~
 $ git clone https://github.com/CS45-FortyFive/FortyFive-Robot_ws.git
 $ cd FortyFive-Robot_ws
-$ cd catkin init
 $ catkin_make
 $ echo "source ~/FortyFive-Robot_ws/devel/setup.bash" >> ~/.bashrc # Adds workspace to search path
 ```
@@ -33,12 +32,24 @@ Run the following command in a terminal window on remote PC to find out the IP a
 
 After that in /.bashrc edit address of localhost in the ROS_MASTER_URI and ROS_HOSTNAME with the IP address acquired from the terminal window.
 
+For Simulation on Local Machine
+```
+$ echo "export ROS_MASTER_URI=http://localhost:11311" >> ~/.bashrc
+$ echo "export ROS_HOSTNAME=localhost" >> ~/.bashrc
+$ echo "export ROS_IP=localhost" >> ~/.bashrc
+$ echo "export FORTYFIVE_ROBOT_MODEL=waffle" >> ~/.bashrc
+```
 When you are done, do not forget to source ~/.bashrc.
 
 ### 2.1 Bringup The Robot
 On your remote PC run following command on your terminal
 ```
 roscore
+```
+
+For Simulation on Local computer
+```
+$ roslaunch fortyfive_robot_bringup fortyfive_robot_fake.launch
 ```
 
 On robot PC run following command on your terminal
@@ -98,6 +109,12 @@ process[fortyfive_robot_diagnostics-3]: started with pid [14200]
 [INFO] [1531306696.418398]: --------------------------
 [INFO] [1531306696.421749]: Start Calibration of Gyro
 [INFO] [1531306698.953226]: Calibration End
+```
+### 2.2 Bringup Gazebo World (For Simulation)
+This is to simulate a world in Gazebo 
+```
+$ export FORTYFIVE_ROBOT_MODEL=waffle
+$ roslaunch fortyfive_robot_gazebo fortyfive_robot_world.launch
 ```
 
 ### 3.1 Run SLAM Nodes
