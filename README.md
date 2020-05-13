@@ -1,5 +1,5 @@
 Following Instructions adapted from TurtleBot3 Manual. For more detailed explanation:
-http://emanual.robotis.com/docs/en/platform/turtlebot3/
+http://emanual.robotis.com/docs/en/platform/turtlebot3/overview
 
 ### 1.1 Install Ubuntu on Remote PC
 Download and install the Ubuntu 16.04 on the Robot PC and Remote PC from the following link.
