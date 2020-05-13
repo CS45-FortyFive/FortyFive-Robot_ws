@@ -77,7 +77,7 @@ NODES
     fortyfive_robot_diagnostics (fortyfive_robot_bringup/fortyfive_robot_diagnostics)
     fortyfive_robot_lds (hls_lfcd_lds_driver/hlds_laser_publisher)
 
-ROS_MASTER_URI=http://192.168.1.2:11311
+ROS_MASTER_URI=http://localhost:11311
 
 process[fortyfive_robot_core-1]: started with pid [14198]
 process[fortyfive_robot_lds-2]: started with pid [14199]
