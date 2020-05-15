@@ -216,25 +216,31 @@ On your Remote PC run following command to save the map created by gmapping.
 $ rosrun map_server map_saver -f ~/map
 ```
 
-### 4.1 Navigate Robot on the Created map
+### 4.1.1 Navigate Robot on the Created map [Robot]
 On your remote PC run following command on your terminal
 `roscore`
 
-On robot PC run following command on your terminal
+On robot PC run following command on your terminal. [Don't need for Simulation]
 ```
 $ roslaunch fortyfive_robot_bringup fortyfive_robot_robot.launch
 ```
+### 4.1.2 Navigate Robot on the Created map [Simulation]
+Bring the Gazebo World:
+```
+$ export FORTYFIVE_ROBOT_MODEL=waffle
+$ roslaunch fortyfive_robot_gazebo fortyfive_robot_world.launch
+```
 
+### 4.2 Set Navigation Goal
 On your remote PC run following command on your terminal:
 ```
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_navigation fortyfive_robot_navigation.launch map_file:=$HOME/map.yaml
 ```
 
-### 4.2 Set Navigation Goal
-On your Remote PC. If you press 2D Nav Goal in the menu of RViz, a very large green arrow appears. This green arrow is a marker that can specify the destination of the robot. The root of the arrow is the x and y position of the robot, and the orientation pointed by the arrow is the theta direction of the robot. Click this arrow at the position where the robot will move, and drag it to set the orientation like the instruction below.
+Press 2D Nav Goal in the menu of RViz, a very large green arrow appears. This green arrow is a marker that can specify the destination of the robot. The root of the arrow is the x and y position of the robot, and the orientation pointed by the arrow is the theta direction of the robot. Click this arrow at the position where the robot will move, and drag it to set the orientation like the instruction below.
 
-![Image of Navigation Position](url)
+![Gif of Navigation Position](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/pos_estimate.gif)
 
 Click the 2D Nav Goal button.
 Click on a specific point in the map to set a goal position and drag the cursor to the direction where TurtleBot should be facing at the end.
