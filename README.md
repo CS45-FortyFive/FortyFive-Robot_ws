@@ -52,7 +52,7 @@ To install just simulation follow these steps:
 * 1.2 Install ROS 1 Kinetic
 * 1.3 Dependencies
 * 1.4.1 - Network Configuration ROS
-* 3.2.1 - 3.2.4 - Run SLAM
+* [3.1.1](#311-slam-simulation) - 3.1.4 - Run SLAM
 * 4.1.2 - 4.2 - Navigate Robot
 * 7.1 Install Barcode Dependencies (VISP)
 
@@ -140,7 +140,8 @@ source ~/.bashrc.
 ```
 
 Make sure that your ROS environment set correctly.
-```declare -x ROSLISP_PACKAGE_DIRECTORIES="/home/username/FortyFive-Robot_ws/devel/share/common-lisp:"
+```
+declare -x ROSLISP_PACKAGE_DIRECTORIES="/home/username/FortyFive-Robot_ws/devel/share/common-lisp:"
 declare -x ROS_DISTRO="kinetic"
 declare -x ROS_ETC_DIR="/opt/ros/kinetic/etc/ros"
 declare -x ROS_HOSTNAME="localhost"
