@@ -160,7 +160,7 @@ space key, s : force stop
 
 CTRL-C to quit
 ```
-![Gif of teleop](url)
+![Gif of teleop](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/teleop.gif)
 
 Now you can control the robot with your keyboard. Press W to move Forward. X to go backwards. A to turn left and D to turn right. Pressing S will stop the movement of the Robot.
 
@@ -208,7 +208,7 @@ On new terminal and run following commands.
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_teleop fortyfive_robot_teleop_key.launch
 ```
-![Gif of SLAM](url)
+![Gif of SLAM](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/slam2.gif)
 ### 3.2.4 Save SLAM Map [Simulation]
 On your Remote PC run following command to save the map created by gmapping.
 
@@ -240,7 +240,7 @@ Click the 2D Nav Goal button.
 Click on a specific point in the map to set a goal position and drag the cursor to the direction where TurtleBot should be facing at the end.
 The robot will create a path to avoid obstacles to its destination based on the map. Then, the robot moves along the path. At this time, even if an obstacle is suddenly detected, the robot moves to the target point avoiding the obstacle.
 
-![Gif of Navigation](url)
+![Gif of Navigation](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/navigation.png)
 
 ### 5.1 Install RealSense ROS Package:
 
