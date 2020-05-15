@@ -55,7 +55,7 @@ To install just simulation follow these steps:
 * 3.2.1 - 3.2.4 - Run SLAM
 * 4.1.2 - 4.2 - Navigate Robot
 * 7.1 Install Barcode Dependencies (VISP)
-[1.4](#Wake-Up-The-Robot-[Laptop])
+
 
 ** Installation may take long time. Do NOT close the terminal. I recommend increasing RAM on the virtual machine.
 
@@ -76,7 +76,6 @@ $ wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/instal
 ```
 
 ### 1.3 Install Dependent ROS Packages
-#something-bla
 ```
 $ sudo apt-get install ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kinetic-teleop-twist-keyboard ros-kinetic-laser-proc ros-kinetic-rgbd-launch ros-kinetic-depthimage-to-laserscan ros-kinetic-rosserial-arduino ros-kinetic-rosserial-python ros-kinetic-rosserial-server ros-kinetic-rosserial-client ros-kinetic-rosserial-msgs
 ```
