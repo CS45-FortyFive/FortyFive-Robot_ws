@@ -1,4 +1,0 @@
-<launch>
-  <node pkg="fortyfive_robot_example" type="fortyfive_robot_pointop_key" name="fortyfive_robot_pointop_keyboard"  output="screen">
-  </node>
-</launch>

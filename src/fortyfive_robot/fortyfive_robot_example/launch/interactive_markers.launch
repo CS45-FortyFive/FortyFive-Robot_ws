@@ -1,5 +1,0 @@
-<launch>
-  <node pkg="fortyfive_robot_example" type="fortyfive_robot_marker_server" name="fortyfive_robot_marker_server">
-    <remap from="interactive_marker_velocity_smoother/raw_cmd_vel" to="cmd_vel"/>
-  </node>
-</launch>

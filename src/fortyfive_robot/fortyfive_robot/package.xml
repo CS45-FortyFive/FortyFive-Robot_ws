@@ -1,3 +1,6 @@
+<!-- Containing information about package -->
+<!-- - Package name, Author, License, and dependent packages. -->
+
 <?xml version="1.0"?>
 <package format="2">
   <name>fortyfive_robot</name>

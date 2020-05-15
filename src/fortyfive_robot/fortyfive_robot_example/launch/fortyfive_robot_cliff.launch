@@ -1,4 +1,0 @@
-<launch>
-  <node pkg="fortyfive_robot_example" type="fortyfive_robot_cliff" name="fortyfive_robot_cliff" output="screen">
-  </node>
-</launch>

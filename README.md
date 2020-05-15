@@ -1,27 +1,32 @@
-Following Instructions adapted from TurtleBot3 Manual. For more detailed explanation:
-http://emanual.robotis.com/docs/en/platform/turtlebot3/overview
 
-You can purchase the robot: http://www.robotis.us/turtlebot-3-waffle-pi/
+## Hardware
+* urtleBot 3 - Waffle
+* WidowX Robot Arm Kit
+* Intel® RealSense™ D415 Depth Camera
+
+## Software Requirements
+* Ubuntu 16.04
+* ROS 1 Kinetic
+
 
 #### File Structure
 ```
 FortyFive-Robot_ws/        --WORKSPACE
-  src/                   --SOURCE SPACE
+  src/                   --Space for the user source code
     CMakeLists.txt       --This is symlinked to catkin/cmake/toplevel.cmake
-    package_1/
-      CMakeLists.txt
-      package.xml
-    ...
     package_n/
+      src                --Source Code Files
+      msg                --Message Files
+      srv                --Service Files
       CATKIN_IGNORE      --Optionally place this marker file to exclude package_n from being processed. Its file type (e.g. regular file, directory) and contents don't matter. It may even be a dangling symlink.
-      CMakeLists.txt
-      package.xml
+      CMakeLists.txt     --Configuration File
+      package.xml        --Package Configuration File (Containing information about package)
   build/                 --BUILD SPACE(this is where build system is invoked, not necessarily within workspace)
     CATKIN_IGNORE        --Marking the folder to be ignored when crawling for packages (necessary when source space is in the root of the workspace, the file is emtpy)
   devel/                 --DEVEL SPACE (targets go here, parameterizable, but defaults to peer of Build Space)
     bin/
     etc/
-    include/
+    include/            
     lib/
     share/
     .catkin              --Marking the folder as a development space (the file contains a semicolon separated list of Source space paths)
@@ -41,15 +46,19 @@ FortyFive-Robot_ws/        --WORKSPACE
     setup.sh
     ...
 ```
-
 #### NO-Robot Installation Guide:
 To install just simulation follow these steps:
-* 1.1
-* 1.2
-* 1.3
-* 1.4.1
-* 3.2.1 - 3.2.4
-* 4.1.2
+* 1.1 Install Ubuntu 16.04
+* 1.2 Install ROS 1 Kinetic
+* 1.3 Dependencies
+* 1.4.1 - Network Configuration ROS
+* 3.2.1 - 3.2.4 - Run SLAM
+* 4.1.2 - 4.2 - Navigate Robot
+*
+
+Following Instructions adapted and modified from TurtleBot3 Manual.
+For more detailed explanation:
+http://emanual.robotis.com/docs/en/platform/turtlebot3/overview
 
 ### 1.1 Install Ubuntu on Laptop
 Download and install the **Ubuntu 16.04** on the Robot PC and Laptop from the following link.
@@ -67,69 +76,94 @@ $ wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/instal
 ```
 $ sudo apt-get install ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kinetic-teleop-twist-keyboard ros-kinetic-laser-proc ros-kinetic-rgbd-launch ros-kinetic-depthimage-to-laserscan ros-kinetic-rosserial-arduino ros-kinetic-rosserial-python ros-kinetic-rosserial-server ros-kinetic-rosserial-client ros-kinetic-rosserial-msgs
 
-$ cd ~
+Initialize a Workspace Folder
+
+```$ cd ~
 $ git clone https://github.com/CS45-FortyFive/FortyFive-Robot_ws.git
-$ cd FortyFive-Robot_ws
+$ cd  ~/FortyFive-Robot_ws
+$ catkin_init_workspace
 $ catkin_make
-$ echo "source ~/FortyFive-Robot_ws/devel/setup.bash" >> ~/.bashrc # Adds workspace to search path
+$ echo "source ~/FortyFive-Robot_ws/devel/setup.bash" >> ~/.bashrc # Adds workspace to search path]
+$ echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+$ source ~/.bashrc
 ```
 
 ### 1.4 Network Configuration
-ROS 1 requires IP addresses in order to communicate between Robot PC and the Laptop. The Laptop and TurtleBot PC should be connected to the same wifi router.
+To reduce the time difference betweeen remote pc and robot, run following:
 
-Run the following command in a terminal window on Laptop to find out the IP address.
 ```
-ifconfig
+$ sudo apt-get install -y chrony ntpdate
+$ sudo ntpdate -q ntp.ubuntu.com
 ```
 
-After that in `/.bashrc` edit address of localhost in the ROS_MASTER_URI and ROS_HOSTNAME with the IP address acquired from the terminal window.
-
-#### 1.4.1 For Simulation
-##### On Local Machine:
+### 1.4.1 ROS Network Configuration
+ROS requires IP addresses in order to communicate between Robot PC and the Laptop.
+##### 1.4.3 [Simulation]:
+Run following commands to configurate simulation network.
+###### Laptop:
 ```
 $ echo "export ROS_MASTER_URI=http://localhost:11311" >> ~/.bashrc
 $ echo "export ROS_HOSTNAME=localhost" >> ~/.bashrc
 $ echo "export ROS_IP=localhost" >> ~/.bashrc
 $ echo "export FORTYFIVE_ROBOT_MODEL=waffle" >> ~/.bashrc
+
+```
+##### 1.4.2 Laptop - [Connect to Robot]:
+ROS requires IP addresses in order to communicate between Robot PC and the Laptop. The Laptop and Robot PC should be connected to the same wifi router.
+Run the following command in a terminal window on Laptop to find out the IP address.
+```
+ifconfig
 ```
 
-#### 1.4.2 For Actual ROBOT
-##### On ROBOT
+###### Laptop Set ROS Network
 ```
 $ echo "export ROS_MASTER_URI=IP_OF_YOUR_LAPTOP" >> ~/.bashrc
 $ echo "export ROS_HOSTNAME=IP_OF_THE_ROBOT" >> ~/.bashrc
 $ echo "export FORTYFIVE_ROBOT_MODEL=waffle" >> ~/.bashrc
 ```
-##### On Laptop
+###### Robot Set ROS Network
 ```
 $ echo "export ROS_MASTER_URI=IP_OF_YOUR_LAPTOP" >> ~/.bashrc
 $ echo "export ROS_HOSTNAME=IP_OF_YOUR_LAPTOP" >> ~/.bashrc
 $ echo "export FORTYFIVE_ROBOT_MODEL=waffle" >> ~/.bashrc
 ```
 
-When you are done, do not forget to
+
+When you are done, with this step run following:
 ```
 source ~/.bashrc.
 ```
 
 Make sure that your ROS environment set correctly.
-```
-echo $ROS_PACKAGE_PATH
-```
-You should see:
-```
-YOUR_INSTALL_PATH/FortyFive-Robot_ws/src
-```
-### 2.1 Bringup The Robot [Laptop]
-On your Laptop run following command on your terminal
-```
-roscore
+```declare -x ROSLISP_PACKAGE_DIRECTORIES="/home/username/FortyFive-Robot_ws/devel/share/common-lisp:"
+declare -x ROS_DISTRO="kinetic"
+declare -x ROS_ETC_DIR="/opt/ros/kinetic/etc/ros"
+declare -x ROS_HOSTNAME="localhost"
+declare -x ROS_IP="localhost"
+declare -x ROS_MASTER_URI="http://localhost:11311"
+declare -x ROS_PACKAGE_PATH="/home/bro/FortyFive-Robot_ws/src:/home/bro/obot_ws/src:/home/bro/catkin_ws/src:/opt/ros/kinetic/share"
+declare -x ROS_PYTHON_VERSION="2"
+declare -x ROS_ROOT="/opt/ros/kinetic/share/ros"
+declare -x ROS_VERSION="1"
 ```
 
-##### For Simulation on Local computer [Laptop]
+
+
+### 2.1 Wake Up The Robot [Laptop]
+
+### 2.1.1 For Simulation on Local computer [Laptop]
+On your Laptop run following command on your terminal to simulate robot on Rviz.
 ```
 $ roslaunch fortyfive_robot_fake fortyfive_robot_fake.launch
 ```
+![Image of BringUp](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/bringup_robot.png)
+### 2.1.2 Wake Up The Robot
+##### Run following command on your terminal [Laptop]
+
+```
+roscore
+```
+roscore is the command that runs the ROS master.
 
 ##### Run following command on your terminal [Robot]
 ```
@@ -191,16 +225,62 @@ process[fortyfive_robot_diagnostics-3]: started with pid [14200]
 ```
 
 ## 3.1 SLAM
-Follow instructions under 3.1.x to run SLAM on the actual robot.
+* 3.1 - ROBOT
+* 3.2 - Simulation
 
-### 3.1.1 Run SLAM Nodes [Laptop]
+
+## 3.1.1 SLAM [Simulation]
+Follow instructions under 3.2.x to run SLAM on the virtual environment.
+
+### 3.1.2 Bringup Gazebo Environment [Simulation]
+This is to simulate a world in Gazebo.
+You can launch the Gazebo World:
+```
+$ export FORTYFIVE_ROBOT_MODEL=waffle
+$ roslaunch fortyfive_robot_gazebo fortyfive_robot_world.launch
+```
+![Image of Gazebo World](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/gazebo_world.png)
+
+
+or You can Launch Gazebo House:
+```
+$ export FORTYFIVE_ROBOT_MODEL=waffle
+$ roslaunch fortyfive_robot_gazebo fortyfive_robot_house.launch
+```
+![Image of Gazebo House](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/gazebo_house.png)
+
+### 3.1.2 Run SLAM Nodes [Simulation]
+On your Laptop open a new terminal and run following commands.
+```
+$ export FORTYFIVE_ROBOT_MODEL=waffle
+$ roslaunch fortyfive_robot_slam fortyfive_robot_slam.launch slam_methods:=gmapping
+```
+![Image of SLAM](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/mapping.png)
+
+### 3.1.3 Control Robot over Terminal [Simulation]
+On new terminal and run following commands.
+```
+$ export FORTYFIVE_ROBOT_MODEL=waffle
+$ roslaunch fortyfive_robot_teleop fortyfive_robot_teleop_key.launch
+```
+![Gif of SLAM](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/slam2.gif)
+### 3.1.4 Save SLAM Map [Simulation]
+On your Laptop run following command to save the map created by gmapping.
+
+```
+$ rosrun map_server map_saver -f ~/map
+```
+
+### 3.2.1 Run SLAM Nodes [Laptop]
+
+
 On your Laptop open a new terminal and run following commands.
 ```
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_slam fortyfive_robot_slam.launch slam_methods:=gmapping
 ```
 
-### 3.1.2 Control Robot over Terminal [Laptop]
+### 3.2.2 Control Robot over Terminal [Laptop]
 On your Laptop open a new terminal and run following commands.
 ```
 $ export FORTYFIVE_ROBOT_MODEL=waffle
@@ -228,55 +308,14 @@ Now you can control the robot with your keyboard. Press W to move Forward. X to 
 
 
 
-### 3.1.3 Save SLAM Map [Laptop]
+### 3.2.3 Save SLAM Map [Laptop]
 On your Laptop run following command to save the map created by gmapping.
 
 ```
 $ rosrun map_server map_saver -f ~/map
 ```
 
-
-## 3.2.1 SLAM [Simulation]
-Follow instructions under 3.2.x to run SLAM on the virtual environment.
-
-### 3.2.2 Bringup Gazebo Environment [Simulation]
-This is to simulate a world in Gazebo.
-You can launch the Gazebo World:
-```
-$ export FORTYFIVE_ROBOT_MODEL=waffle
-$ roslaunch fortyfive_robot_gazebo fortyfive_robot_world.launch
-```
-![Image of Gazebo World](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/gazebo_world.png)
-
-
-or You can Launch Gazebo House:
-```
-$ export FORTYFIVE_ROBOT_MODEL=waffle
-$ roslaunch fortyfive_robot_gazebo fortyfive_robot_house.launch
-```
-![Image of Gazebo House](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/gazebo_house.png)
-
-### 3.2.2 Run SLAM Nodes [Simulation]
-On your Laptop open a new terminal and run following commands.
-```
-$ export FORTYFIVE_ROBOT_MODEL=waffle
-$ roslaunch fortyfive_robot_slam fortyfive_robot_slam.launch slam_methods:=gmapping
-```
-![Image of SLAM](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/mapping.png)
-
-### 3.2.3 Control Robot over Terminal [Simulation]
-On new terminal and run following commands.
-```
-$ export FORTYFIVE_ROBOT_MODEL=waffle
-$ roslaunch fortyfive_robot_teleop fortyfive_robot_teleop_key.launch
-```
-![Gif of SLAM](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/slam2.gif)
-### 3.2.4 Save SLAM Map [Simulation]
-On your Laptop run following command to save the map created by gmapping.
-
-```
-$ rosrun map_server map_saver -f ~/map
-```
+## 4.1 Navigate Robot
 
 ### 4.1.1 Navigate Robot on the Created map [Robot]
 On your Laptop run following command on your terminal
@@ -289,7 +328,7 @@ On robot PC run following command on your terminal.
 $ roslaunch fortyfive_robot_bringup fortyfive_robot_robot.launch
 ```
 
-### 4.1.2 Navigate Robot on the Created map [Simulation]
+### 4.1.2  Navigate Robot on the Created map [Simulation]
 Bring the Gazebo World:
 ```
 $ export FORTYFIVE_ROBOT_MODEL=waffle
@@ -401,6 +440,7 @@ This will show the depth of each points by color description.
 ### 6.1 Assemble WidowX MKII Robot Arm
 Following Instructions adapted from TurtleBot3 Manual. For more detailed explanation please visit:
 https://widowx-arm.readthedocs.io/en/latest/index.html
+
 Before installing arm dependencies, carefully assemble the robotic arm by following the directions in this link.
 ```
 http://www.trossenrobotics.com/productdocs/assemblyguides/widowx-robot-arm-mk2.html
