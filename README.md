@@ -46,7 +46,13 @@ When you are done, do not forget to
 ```source ~/.bashrc.
 ```
 
-
+Make sure that your ROS environment set correctly.
+```
+echo $ROS_PACKAGE_PATH
+```
+You should see:
+```YOUR_INSTALL_PATH/FortyFive-Robot_ws/src
+```
 ### 2.1 Bringup The Robot
 On your remote PC run following command on your terminal
 ```
@@ -55,7 +61,7 @@ roscore
 
 For Simulation on Local computer
 ```
-$ roslaunch fortyfive_robot_bringup fortyfive_robot_fake.launch
+$ roslaunch fortyfive_robot_fake fortyfive_robot_fake.launch
 ```
 
 On robot PC run following command on your terminal
