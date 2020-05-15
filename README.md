@@ -37,11 +37,26 @@ ifconfig
 
 After that in `/.bashrc` edit address of localhost in the ROS_MASTER_URI and ROS_HOSTNAME with the IP address acquired from the terminal window.
 
-For Simulation on Local Machine
+#### 1.4.1 For Simulation
+##### On Local Machine:
 ```
 $ echo "export ROS_MASTER_URI=http://localhost:11311" >> ~/.bashrc
 $ echo "export ROS_HOSTNAME=localhost" >> ~/.bashrc
 $ echo "export ROS_IP=localhost" >> ~/.bashrc
+$ echo "export FORTYFIVE_ROBOT_MODEL=waffle" >> ~/.bashrc
+```
+
+#### 1.4.2 For Actual ROBOT
+##### On ROBOT
+```
+$ echo "export ROS_MASTER_URI=IP_OF_YOUR_LAPTOP" >> ~/.bashrc
+$ echo "export ROS_HOSTNAME=IP_OF_THE_ROBOT" >> ~/.bashrc
+$ echo "export FORTYFIVE_ROBOT_MODEL=waffle" >> ~/.bashrc
+```
+##### On Laptop
+```
+$ echo "export ROS_MASTER_URI=IP_OF_YOUR_LAPTOP" >> ~/.bashrc
+$ echo "export ROS_HOSTNAME=IP_OF_YOUR_LAPTOP" >> ~/.bashrc
 $ echo "export FORTYFIVE_ROBOT_MODEL=waffle" >> ~/.bashrc
 ```
 
@@ -138,7 +153,7 @@ $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_slam fortyfive_robot_slam.launch slam_methods:=gmapping
 ```
 
-### 3.1.2 Control Robot over Terminal [Robot]
+### 3.1.2 Control Robot over Terminal
 On your Remote PC open a new terminal and run following commands.
 ```
 $ export FORTYFIVE_ROBOT_MODEL=waffle
@@ -166,7 +181,7 @@ Now you can control the robot with your keyboard. Press W to move Forward. X to 
 
 
 
-### 3.1.3 Save SLAM Map[Robot]
+### 3.1.3 Save SLAM Map
 On your Remote PC run following command to save the map created by gmapping.
 
 ```
@@ -218,12 +233,15 @@ $ rosrun map_server map_saver -f ~/map
 
 ### 4.1.1 Navigate Robot on the Created map [Robot]
 On your remote PC run following command on your terminal
-`roscore`
+```
+roscore
+```
 
-On robot PC run following command on your terminal. [Don't need for Simulation]
+On robot PC run following command on your terminal.
 ```
 $ roslaunch fortyfive_robot_bringup fortyfive_robot_robot.launch
 ```
+
 ### 4.1.2 Navigate Robot on the Created map [Simulation]
 Bring the Gazebo World:
 ```
