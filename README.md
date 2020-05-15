@@ -63,6 +63,7 @@ Following Instructions adapted and modified from TurtleBot3 Manual.
 For more detailed explanation:
 http://emanual.robotis.com/docs/en/platform/turtlebot3/overview
 
+## 1 Software Installation
 ### 1.1 Install Ubuntu on Laptop
 Download and install the **Ubuntu 16.04** on the Robot PC and Laptop from the following link.
 
@@ -356,7 +357,7 @@ The robot will create a path to avoid obstacles to its destination based on the 
 
 ![Gif of Navigation](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/navigation.gif)
 
-## 3-D Mapping with Intel® RealSense™ D410
+## 5 3-D Mapping with Intel® RealSense™ D410
 ### 5.1 Install RealSense ROS Package:
 
 Install Prerequisites:
@@ -440,7 +441,7 @@ This will show the depth of each points by color description.
 * Click `add - By topic` and find the Image type `/image_color` topic in `/camera/rgb`, then click it. This will show the view of the normal camera image
 
 
-
+## 6 WidowX MKII Robot Arm
 ### 6.1 Assemble WidowX MKII Robot Arm
 Following Instructions adapted from TurtleBot3 Manual. For more detailed explanation please visit:
 https://widowx-arm.readthedocs.io/en/latest/index.html
@@ -579,3 +580,29 @@ roslaunch visp_camera_calibration lagadic_grid.launch
 
 Start clicking the numbered circles liked showed on the gif.
 when you done with selecting 1 to 4. The image processing interface will try to detect the rest of the points for you.
+
+### 8 3D RTAB-Map
+#### 8.1 Install RTAB-Map Dependancies
+To install RTAB-Map libraries:
+```
+$ sudo apt-get install ros-kinetic-rtabmap-ros
+$ sudo apt-get install ros-kinetic-rtabmap ros-kinetic-rtabmap-ros
+```
+Install RTAB-Map standalone libraries:
+```
+$ cd ~
+$ git clone https://github.com/introlab/rtabmap.git rtabmap
+$ cd rtabmap/build
+$ cmake ..  [<---double dots included]
+$ make
+$ sudo make install
+```
+
+Clone `vision_opencv`, `image_transport_plugins` and `rtabmap_ros` packages in workspace:
+```
+$ cd ~/FortyFive-Robot_ws
+$ git clone https://github.com/ros-perception/vision_opencv src/vision_opencv
+$ git clone https://github.com/ros-perception/image_transport_plugins.git src/image_transport_plugins
+$ git clone https://github.com/introlab/rtabmap_ros.git src/rtabmap_ros
+$ catkin_make
+```
