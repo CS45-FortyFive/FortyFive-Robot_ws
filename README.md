@@ -57,7 +57,7 @@ To install just simulation follow these steps:
 * [7.1](#71-install-visp-dependencies) Install Barcode Dependencies (VISP)
 
 
-** Installation may take long time. Do NOT close the terminal. I recommend increasing RAM on the virtual machine.
+*Installation may take long time. Do NOT close the terminal. I recommend increasing RAM on the virtual machine.*
 
 Following Instructions adapted and modified from TurtleBot3 Manual.
 For more detailed explanation:
