@@ -48,13 +48,13 @@ FortyFive-Robot_ws/        --WORKSPACE
 ```
 #### NO-Robot Installation Guide:
 To install just simulation follow these steps:
-* 1.1 Install Ubuntu 16.04
-* 1.2 Install ROS 1 Kinetic
-* 1.3 Dependencies
-* 1.4.1 - Network Configuration ROS
+* [1.1](#11-install-ubuntu-on-laptop) Install Ubuntu 16.04
+* [1.2](#12-install-ros-on-laptop) Install ROS 1 Kinetic
+* [1.3](#13-install-dependent-ros-packages) Dependencies
+* [1.4.1](#141-ros-network-configuration) - Network Configuration ROS
 * [3.1.1](#311-slam-simulation) - 3.1.4 - Run SLAM
-* 4.1.2 - 4.2 - Navigate Robot
-* 7.1 Install Barcode Dependencies (VISP)
+* [4.1.2](#41-navigate-robot) - 4.2 - Navigate Robot
+* [7.1](#71-install-visp-dependencies) Install Barcode Dependencies (VISP)
 
 
 ** Installation may take long time. Do NOT close the terminal. I recommend increasing RAM on the virtual machine.
