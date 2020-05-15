@@ -79,7 +79,8 @@ $ sudo apt-get install ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kinetic-
 
 Initialize a Workspace Folder:
 
-```$ cd ~
+```
+$ cd ~
 $ git clone https://github.com/CS45-FortyFive/FortyFive-Robot_ws.git
 $ cd  ~/FortyFive-Robot_ws
 $ catkin_init_workspace
@@ -90,10 +91,12 @@ $ source ~/.bashrc
 ```
 
 If you get the error: 
-```The specified base path "/home/villanub/FortyFive-Robot_ws" contains a CMakeLists.txt but "catkin_make" must be invoked in the root of workspace
+```
+The specified base path "/home/villanub/FortyFive-Robot_ws" contains a CMakeLists.txt but "catkin_make" must be invoked in the root of workspace
 ```
 Use the command:
-```unlink CMakeLists.txt
+```
+$ unlink CMakeLists.txt
 ```
 
 ### 1.4 Network Configuration
