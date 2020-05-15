@@ -240,7 +240,7 @@ Click the 2D Nav Goal button.
 Click on a specific point in the map to set a goal position and drag the cursor to the direction where TurtleBot should be facing at the end.
 The robot will create a path to avoid obstacles to its destination based on the map. Then, the robot moves along the path. At this time, even if an obstacle is suddenly detected, the robot moves to the target point avoiding the obstacle.
 
-![Gif of Navigation](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/navigation.png)
+![Gif of Navigation](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/navigation.gif)
 
 ### 5.1 Install RealSense ROS Package:
 
