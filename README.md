@@ -1,6 +1,7 @@
 Following Instructions adapted from TurtleBot3 Manual. For more detailed explanation:
 http://emanual.robotis.com/docs/en/platform/turtlebot3/overview
 
+You can purchase the robot: http://www.robotis.us/turtlebot-3-waffle-pi/
 
 #### File Structure
 ```
@@ -50,12 +51,12 @@ To install just simulation follow these steps:
 * 3.2.1 - 3.2.4
 * 4.1.2
 
-### 1.1 Install Ubuntu on Remote PC
-Download and install the **Ubuntu 16.04** on the Robot PC and Remote PC from the following link.
+### 1.1 Install Ubuntu on Laptop
+Download and install the **Ubuntu 16.04** on the Robot PC and Laptop from the following link.
 
 https://www.ubuntu.com/download/alternative-downloads
 
-### 1.2 Install ROS on Remote PC
+### 1.2 Install ROS on Laptop
 Run the following command in a terminal window.
 ```
 $ sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
@@ -74,9 +75,9 @@ $ echo "source ~/FortyFive-Robot_ws/devel/setup.bash" >> ~/.bashrc # Adds worksp
 ```
 
 ### 1.4 Network Configuration
-ROS 1 requires IP addresses in order to communicate between Robot PC and the remote PC. The remote PC and TurtleBot PC should be connected to the same wifi router.
+ROS 1 requires IP addresses in order to communicate between Robot PC and the Laptop. The Laptop and TurtleBot PC should be connected to the same wifi router.
 
-Run the following command in a terminal window on remote PC to find out the IP address.
+Run the following command in a terminal window on Laptop to find out the IP address.
 ```
 ifconfig
 ```
@@ -119,18 +120,18 @@ You should see:
 ```
 YOUR_INSTALL_PATH/FortyFive-Robot_ws/src
 ```
-### 2.1 Bringup The Robot
-On your remote PC run following command on your terminal
+### 2.1 Bringup The Robot [Laptop]
+On your Laptop run following command on your terminal
 ```
 roscore
 ```
 
-For Simulation on Local computer
+##### For Simulation on Local computer [Laptop]
 ```
 $ roslaunch fortyfive_robot_fake fortyfive_robot_fake.launch
 ```
 
-On robot PC run following command on your terminal
+##### Run following command on your terminal [Robot]
 ```
 $ roslaunch fortyfive_robot_bringup fortyfive_robot_robot.launch
 ```
@@ -189,18 +190,18 @@ process[fortyfive_robot_diagnostics-3]: started with pid [14200]
 [INFO] [1531306698.953226]: Calibration End
 ```
 
-## 3.1.1 SLAM [Robot]
+## 3.1 SLAM
 Follow instructions under 3.1.x to run SLAM on the actual robot.
 
-### 3.1.1 Run SLAM Nodes
-On your Remote PC open a new terminal and run following commands.
+### 3.1.1 Run SLAM Nodes [Laptop]
+On your Laptop open a new terminal and run following commands.
 ```
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_slam fortyfive_robot_slam.launch slam_methods:=gmapping
 ```
 
-### 3.1.2 Control Robot over Terminal
-On your Remote PC open a new terminal and run following commands.
+### 3.1.2 Control Robot over Terminal [Laptop]
+On your Laptop open a new terminal and run following commands.
 ```
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_teleop fortyfive_robot_teleop_key.launch
@@ -227,8 +228,8 @@ Now you can control the robot with your keyboard. Press W to move Forward. X to 
 
 
 
-### 3.1.3 Save SLAM Map
-On your Remote PC run following command to save the map created by gmapping.
+### 3.1.3 Save SLAM Map [Laptop]
+On your Laptop run following command to save the map created by gmapping.
 
 ```
 $ rosrun map_server map_saver -f ~/map
@@ -256,7 +257,7 @@ $ roslaunch fortyfive_robot_gazebo fortyfive_robot_house.launch
 ![Image of Gazebo House](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/gazebo_house.png)
 
 ### 3.2.2 Run SLAM Nodes [Simulation]
-On your Remote PC open a new terminal and run following commands.
+On your Laptop open a new terminal and run following commands.
 ```
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_slam fortyfive_robot_slam.launch slam_methods:=gmapping
@@ -271,14 +272,14 @@ $ roslaunch fortyfive_robot_teleop fortyfive_robot_teleop_key.launch
 ```
 ![Gif of SLAM](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/slam2.gif)
 ### 3.2.4 Save SLAM Map [Simulation]
-On your Remote PC run following command to save the map created by gmapping.
+On your Laptop run following command to save the map created by gmapping.
 
 ```
 $ rosrun map_server map_saver -f ~/map
 ```
 
 ### 4.1.1 Navigate Robot on the Created map [Robot]
-On your remote PC run following command on your terminal
+On your Laptop run following command on your terminal
 ```
 roscore
 ```
@@ -296,7 +297,7 @@ $ roslaunch fortyfive_robot_gazebo fortyfive_robot_world.launch
 ```
 
 ### 4.2 Set Navigation Goal
-On your remote PC run following command on your terminal:
+On your Laptop run following command on your terminal:
 ```
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_navigation fortyfive_robot_navigation.launch map_file:=$HOME/map.yaml
@@ -371,6 +372,32 @@ On the Robot run following command:
 $ roslaunch realsense2_camera rs_camera.launch
 ```
 
+### 5.3 SLAM with Intel® RealSense™
+##### Run the camera Node [Laptop]:
+```
+$ roslaunch realsense2_camera rs_rgbd.launch
+```
+
+##### Bring Up the Robot [Robot]:
+```
+$ roslaunch fortyfive_robot_bringup fortyfive_robot_robot.launch
+```
+##### Run SLAM Nodes [Laptop]:
+
+```
+$ roslaunch fortyfive_robot_slam fortyfive_robot_slam.launch
+```
+
+##### Configurate the Camera Settings [Laptop]:
+* Click `Panels -> Views` to open the view window
+* Click `TopDownOrtho` and change it into `XYOrbit`
+* Click `add - By topic` and find the `PointCloud2` type `/points` topic in `/camera/depth`
+* Click `PointCloud2` type topic on the left window, then change Color Transformer from `Intensity` to `AxisColor`.
+This will show the depth of each points by color description.
+* Click `add - By topic` and find the Image type `/image_color` topic in `/camera/rgb`, then click it. This will show the view of the normal camera image
+
+
+
 ### 6.1 Assemble WidowX MKII Robot Arm
 Following Instructions adapted from TurtleBot3 Manual. For more detailed explanation please visit:
 https://widowx-arm.readthedocs.io/en/latest/index.html
@@ -378,7 +405,7 @@ Before installing arm dependencies, carefully assemble the robotic arm by follow
 ```
 http://www.trossenrobotics.com/productdocs/assemblyguides/widowx-robot-arm-mk2.html
 ```
-### 6.3 Install WidowX Arm Dependancies
+### 6.2 Install WidowX Arm Dependancies
 ```
 $ sudo apt install git htop
 $ sudo apt install ros-kinetic-moveit ros-kinetic-pcl-ros
@@ -410,7 +437,7 @@ $ source devel/setup.bash
 $ roslaunch widowx_arm_bringup arm_moveit.launch sim:=false sr300:=false```
 ```
 ### 6.3 Install ROS Arm Dependancies
-On your Remote PC run following commands on your terminal to download and build the OpenMANIPULATOR-X package.
+On your Laptop run following commands on your terminal to download and build the OpenMANIPULATOR-X package.
 
 ```
 $ cd ~/catkin_ws/src/
@@ -420,7 +447,7 @@ $ cd ~/catkin_ws && catkin_make
 ```
 
 ### 7.1 Operate the Arm
-On your remote PC run following command on your terminal:
+On your Laptop run following command on your terminal:
 ```
 $ roscore
 ```
@@ -428,7 +455,7 @@ On the Robot PC run following command on your terminal:
 ```
 $ roslaunch fortyfive_robot_bringup fortyfive_robot_robot.launch
 ```
-On the Remote PC run following command on your terminal:
+On the Laptop run following command on your terminal:
 ```
 $ roslaunch turtlebot3_manipulation_bringup turtlebot3_manipulation_bringup.launch
 ```
