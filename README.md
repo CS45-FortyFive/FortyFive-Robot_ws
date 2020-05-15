@@ -2,7 +2,53 @@ Following Instructions adapted from TurtleBot3 Manual. For more detailed explana
 http://emanual.robotis.com/docs/en/platform/turtlebot3/overview
 
 
+#### File Structure
+```
+FortyFive-Robot_ws/        --WORKSPACE
+  src/                   --SOURCE SPACE
+    CMakeLists.txt       --This is symlinked to catkin/cmake/toplevel.cmake
+    package_1/
+      CMakeLists.txt
+      package.xml
+    ...
+    package_n/
+      CATKIN_IGNORE      --Optionally place this marker file to exclude package_n from being processed. Its file type (e.g. regular file, directory) and contents don't matter. It may even be a dangling symlink.
+      CMakeLists.txt
+      package.xml
+  build/                 --BUILD SPACE(this is where build system is invoked, not necessarily within workspace)
+    CATKIN_IGNORE        --Marking the folder to be ignored when crawling for packages (necessary when source space is in the root of the workspace, the file is emtpy)
+  devel/                 --DEVEL SPACE (targets go here, parameterizable, but defaults to peer of Build Space)
+    bin/
+    etc/
+    include/
+    lib/
+    share/
+    .catkin              --Marking the folder as a development space (the file contains a semicolon separated list of Source space paths)
+    env.bash
+    setup.bash
+    setup.sh
+    ...
+  install/               --INSTALL SPACE (this is where installed targets for test installations go, not necessarily within workspace)
+    bin/
+    etc/
+    include/
+    lib/
+    share/
+    .catkin              --Marking the folder as an install space (the file is empty)
+    env.bash
+    setup.bash
+    setup.sh
+    ...
+```
 
+#### NO-Robot Installation Guide:
+To install just simulation follow these steps:
+* 1.1
+* 1.2
+* 1.3
+* 1.4.1
+* 3.2.1 - 3.2.4
+* 4.1.2
 
 ### 1.1 Install Ubuntu on Remote PC
 Download and install the **Ubuntu 16.04** on the Robot PC and Remote PC from the following link.
@@ -266,6 +312,7 @@ The robot will create a path to avoid obstacles to its destination based on the 
 
 ![Gif of Navigation](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/navigation.gif)
 
+## 3-D Mapping with Intel® RealSense™ D410
 ### 5.1 Install RealSense ROS Package:
 
 Install Prerequisites:
