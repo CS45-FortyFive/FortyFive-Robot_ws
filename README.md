@@ -54,7 +54,9 @@ To install just simulation follow these steps:
 * 1.4.1 - Network Configuration ROS
 * 3.2.1 - 3.2.4 - Run SLAM
 * 4.1.2 - 4.2 - Navigate Robot
-*
+* 7.1 Install Barcode Dependencies (VISP)
+
+** Installation may take long time. Do NOT close the terminal. I recommend increasing RAM on the virtual machine.
 
 Following Instructions adapted and modified from TurtleBot3 Manual.
 For more detailed explanation:
@@ -142,7 +144,7 @@ declare -x ROS_ETC_DIR="/opt/ros/kinetic/etc/ros"
 declare -x ROS_HOSTNAME="localhost"
 declare -x ROS_IP="localhost"
 declare -x ROS_MASTER_URI="http://localhost:11311"
-declare -x ROS_PACKAGE_PATH="/home/bro/FortyFive-Robot_ws/src:/home/bro/obot_ws/src:/home/bro/catkin_ws/src:/opt/ros/kinetic/share"
+declare -x ROS_PACKAGE_PATH="/home/bro/FortyFive-Robot_ws/src:/opt/ros/kinetic/share"
 declare -x ROS_PYTHON_VERSION="2"
 declare -x ROS_ROOT="/opt/ros/kinetic/share/ros"
 declare -x ROS_VERSION="1"
@@ -386,9 +388,9 @@ $ ./scripts/patch-realsense-ubuntu-xenial.sh
 
 ### 5.2 Install Intel® RealSense™ ROS from Sources
 ```
-$ cd ~/catkin_ws/src/
+$ cd ~/FortyFive-Robot_ws/src/
 ```
-Clone the latest Intel® RealSense™ ROS into 'catkin_ws/src/'
+Clone the latest Intel® RealSense™ ROS into 'FortyFive-Robot_ws/src/'
 ```
 $ git clone https://github.com/IntelRealSense/realsense-ros.git
 $ cd realsense-ros/
@@ -402,7 +404,7 @@ $ cd ..
 $ catkin_make clean
 $ catkin_make -DCATKIN_ENABLE_TESTING=False -DCMAKE_BUILD_TYPE=Release
 $ catkin_make install
-$ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+$ echo "source ~/FortyFive-Robot_ws/devel/setup.bash" >> ~/.bashrc
 $ source ~/.bashrc
 ```
 
@@ -481,13 +483,13 @@ $ roslaunch widowx_arm_bringup arm_moveit.launch sim:=false sr300:=false```
 On your Laptop run following commands on your terminal to download and build the OpenMANIPULATOR-X package.
 
 ```
-$ cd ~/catkin_ws/src/
+$ cd ~/FortyFive-Robot_ws/src/
 $ git clone https://github.com/ROBOTIS-GIT/turtlebot3_manipulation.git
 $ git clone https://github.com/ROBOTIS-GIT/turtlebot3_manipulation_simulations.git
-$ cd ~/catkin_ws && catkin_make
+$ cd ~/FortyFive-Robot_ws && catkin_make
 ```
 
-### 7.1 Operate the Arm
+### 6.4 Operate the Arm
 On your Laptop run following command on your terminal:
 ```
 $ roscore
@@ -510,3 +512,70 @@ or You can use Rviz
 ```
 $ roslaunch turtlebot3_manipulation_moveit_config moveit_rviz.launch
 ```
+
+### 7 Installing Barcode Reader Dependencies
+In this section we will install `visp` package that corresponds to the `Open Source Visual Servoing Library ` packaged for ROS.
+
+The algorithm will allow us to detect automatically the barcode using one of the following detectors:
+
+* QR-code detection
+* flashcode detection
+
+You can find more aboit visp here:
+https://visp.inria.fr
+
+#### 7.1 Install visp Dependencies
+
+Install visp Pre-Build Packages:
+```
+sudo apt-get install ros-kinetic-vision-visp
+```
+
+Install dependencies in to workspace.
+```
+$ cd ~/FortyFive-Robot_ws/src
+$ git clone https://github.com/lagadic/vision_visp.git
+$ cd vision_visp
+$ git checkout kinetic
+$ cd ~/FortyFive-Robot_ws
+$ sudo rosdep init
+$ rosdep update
+$ rosdep install --from-paths src --ignore-src --rosdistro kinetic
+
+$ cd ~/FortyFive-Robot_ws
+$ catkin_make
+```
+
+You can test your installation:
+```
+$ roslaunch visp_tracker tutorial.launch
+```
+You should see this screen:
+![Image of Barcode Test1](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/barcode1.png)
+
+And after validation you should see:
+![Image of Barcode Test2](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/barcode2.png)
+
+
+You can test your installation on Pre-Recorded Video:
+```
+roslaunch visp_auto_tracker tutorial.launch
+```
+
+You should see the object position from QR Code
+![Image of Barcode Test3](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/barcode3.png)
+
+#### 7.2 Calibrate the Camera
+For calibrating camera we will use `visp_camera_calibration`.
+We will use the example images that come with this package. They are located in `launch/images`.
+
+Run Following command on terminal to start calibration:
+
+```
+roslaunch visp_camera_calibration lagadic_grid.launch
+```
+
+![Gif of calibration](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/barcode_calib.gif)
+
+Start clicking the numbered circles liked showed on the gif.
+when you done with selecting 1 to 4. The image processing interface will try to detect the rest of the points for you.
