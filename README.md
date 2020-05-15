@@ -31,7 +31,9 @@ $ echo "source ~/FortyFive-Robot_ws/devel/setup.bash" >> ~/.bashrc # Adds worksp
 ROS 1 requires IP addresses in order to communicate between Robot PC and the remote PC. The remote PC and TurtleBot PC should be connected to the same wifi router.
 
 Run the following command in a terminal window on remote PC to find out the IP address.
-```ifconfig```
+```
+ifconfig
+```
 
 After that in `/.bashrc` edit address of localhost in the ROS_MASTER_URI and ROS_HOSTNAME with the IP address acquired from the terminal window.
 
@@ -42,8 +44,10 @@ $ echo "export ROS_HOSTNAME=localhost" >> ~/.bashrc
 $ echo "export ROS_IP=localhost" >> ~/.bashrc
 $ echo "export FORTYFIVE_ROBOT_MODEL=waffle" >> ~/.bashrc
 ```
+
 When you are done, do not forget to
-```source ~/.bashrc.
+```
+source ~/.bashrc.
 ```
 
 Make sure that your ROS environment set correctly.
@@ -51,7 +55,8 @@ Make sure that your ROS environment set correctly.
 echo $ROS_PACKAGE_PATH
 ```
 You should see:
-```YOUR_INSTALL_PATH/FortyFive-Robot_ws/src
+```
+YOUR_INSTALL_PATH/FortyFive-Robot_ws/src
 ```
 ### 2.1 Bringup The Robot
 On your remote PC run following command on your terminal
@@ -122,26 +127,21 @@ process[fortyfive_robot_diagnostics-3]: started with pid [14200]
 [INFO] [1531306696.421749]: Start Calibration of Gyro
 [INFO] [1531306698.953226]: Calibration End
 ```
-### 2.2 Bringup Gazebo World (For Simulation)
-This is to simulate a world in Gazebo
-```
-$ export FORTYFIVE_ROBOT_MODEL=waffle
-$ roslaunch fortyfive_robot_gazebo fortyfive_robot_world.launch
-```
 
-### 3.1 Run SLAM Nodes
+## 3.1.1 SLAM [Robot]
+Follow instructions under 3.1.x to run SLAM on the actual robot.
+
+### 3.1.1 Run SLAM Nodes
 On your Remote PC open a new terminal and run following commands.
 ```
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_slam fortyfive_robot_slam.launch slam_methods:=gmapping
 ```
 
-The slam_methods options include gmapping, cartographer, hector, karto, frontier_exploration, and you can choose one of them. But for our project we will stick with gmapping.
-
-### 3.2 Control Robot over Terminal
+### 3.1.2 Control Robot over Terminal [Robot]
 On your Remote PC open a new terminal and run following commands.
 ```
-$ export FORTYFIVE_ROBOT_MODEL=${TB3_MODEL}
+$ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_teleop fortyfive_robot_teleop_key.launch
 ```
 
@@ -162,14 +162,57 @@ CTRL-C to quit
 ```
 Now you can control the robot with your keyboard. Press W to move Forward. X to go backwards. A to turn left and D to turn right. Pressing S will stop the movement of the Robot.
 
-### 3.3 Save SLAM Map
+### 3.1.3 Save SLAM Map[Robot]
 On your Remote PC run following command to save the map created by gmapping.
 
 ```
 $ rosrun map_server map_saver -f ~/map
 ```
 
-### 4.1 Navigate Robot on Created map
+
+## 3.2.1 SLAM [Simulation]
+Follow instructions under 3.2.x to run SLAM on the virtual environment.
+
+### 3.2.2 Bringup Gazebo Environment [Simulation]
+This is to simulate a world in Gazebo.
+You can launch the Gazebo World:
+```
+$ export FORTYFIVE_ROBOT_MODEL=waffle
+$ roslaunch fortyfive_robot_gazebo fortyfive_robot_world.launch
+```
+![Image of Gazebo World](url)
+
+
+or You can Launch Gazebo House:
+```
+$ export FORTYFIVE_ROBOT_MODEL=waffle
+$ roslaunch fortyfive_robot_gazebo fortyfive_robot_house.launch
+```
+![Image of Gazebo House](url)
+
+####3.2.2 Run SLAM Nodes [Simulation]
+On your Remote PC open a new terminal and run following commands.
+```
+$ export FORTYFIVE_ROBOT_MODEL=waffle
+$ roslaunch fortyfive_robot_slam fortyfive_robot_slam.launch slam_methods:=gmapping
+```
+![Image of SLAM](url)
+
+### 3.2.3 Control Robot over Terminal [Simulation]
+On new terminal and run following commands.
+```
+$ export FORTYFIVE_ROBOT_MODEL=waffle
+$ roslaunch fortyfive_robot_teleop fortyfive_robot_teleop_key.launch
+```
+
+### 3.2.4 Save SLAM Map [Simulation]
+On your Remote PC run following command to save the map created by gmapping.
+
+```
+$ rosrun map_server map_saver -f ~/map
+```
+
+### 4.1 Navigate Robot on the Created map
 On your remote PC run following command on your terminal
 `roscore`
 
@@ -180,15 +223,21 @@ $ roslaunch fortyfive_robot_bringup fortyfive_robot_robot.launch
 
 On your remote PC run following command on your terminal:
 ```
-$ export FORTYFIVE_ROBOT_MODEL=${TB3_MODEL}
+$ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_navigation fortyfive_robot_navigation.launch map_file:=$HOME/map.yaml
 ```
 
 ### 4.2 Set Navigation Goal
 On your Remote PC. If you press 2D Nav Goal in the menu of RViz, a very large green arrow appears. This green arrow is a marker that can specify the destination of the robot. The root of the arrow is the x and y position of the robot, and the orientation pointed by the arrow is the theta direction of the robot. Click this arrow at the position where the robot will move, and drag it to set the orientation like the instruction below.
+
+![Image of Navigation Position](url)
+
 Click the 2D Nav Goal button.
 Click on a specific point in the map to set a goal position and drag the cursor to the direction where TurtleBot should be facing at the end.
 The robot will create a path to avoid obstacles to its destination based on the map. Then, the robot moves along the path. At this time, even if an obstacle is suddenly detected, the robot moves to the target point avoiding the obstacle.
+
+![Image of Navigation Goal](url)
+
 
 ### 5.1 Install RealSense ROS Package:
 
