@@ -75,8 +75,9 @@ $ wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/instal
 ### 1.3 Install Dependent ROS Packages
 ```
 $ sudo apt-get install ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kinetic-teleop-twist-keyboard ros-kinetic-laser-proc ros-kinetic-rgbd-launch ros-kinetic-depthimage-to-laserscan ros-kinetic-rosserial-arduino ros-kinetic-rosserial-python ros-kinetic-rosserial-server ros-kinetic-rosserial-client ros-kinetic-rosserial-msgs
+```
 
-Initialize a Workspace Folder
+Initialize a Workspace Folder:
 
 ```$ cd ~
 $ git clone https://github.com/CS45-FortyFive/FortyFive-Robot_ws.git
