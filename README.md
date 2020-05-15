@@ -1,6 +1,6 @@
 
 ## Hardware
-* urtleBot 3 - Waffle
+* TurtleBot 3 - Waffle
 * WidowX Robot Arm Kit
 * Intel® RealSense™ D415 Depth Camera
 
@@ -81,8 +81,7 @@ $ sudo apt-get install ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kinetic-
 
 Initialize a Workspace Folder:
 
-```
-$ cd ~
+```$ cd ~
 $ git clone https://github.com/CS45-FortyFive/FortyFive-Robot_ws.git
 $ cd  ~/FortyFive-Robot_ws
 $ catkin_init_workspace
@@ -90,15 +89,6 @@ $ catkin_make
 $ echo "source ~/FortyFive-Robot_ws/devel/setup.bash" >> ~/.bashrc # Adds workspace to search path]
 $ echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 $ source ~/.bashrc
-```
-
-If you get the error: 
-```
-The specified base path "/home/villanub/FortyFive-Robot_ws" contains a CMakeLists.txt but "catkin_make" must be invoked in the root of workspace
-```
-Use the command:
-```
-$ unlink CMakeLists.txt
 ```
 
 ### 1.4 Network Configuration
@@ -560,17 +550,16 @@ You can test your installation:
 ```
 $ roslaunch visp_tracker tutorial.launch
 ```
+
 You should see this screen:
 ![Image of Barcode Test1](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/barcode1.png)
 
 And after validation you should see:
+
 ![Image of Barcode Test2](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/barcode2.png)
 
 
 You can test your installation on Pre-Recorded Video:
-```
-roslaunch visp_auto_tracker tutorial.launch
-```
 
 You should see the object position from QR Code
 ![Image of Barcode Test3](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/barcode3.png)
