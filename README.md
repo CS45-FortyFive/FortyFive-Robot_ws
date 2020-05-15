@@ -180,7 +180,7 @@ You can launch the Gazebo World:
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_gazebo fortyfive_robot_world.launch
 ```
-![Image of Gazebo World](url)
+![Image of Gazebo World](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/gazebo_world.png)
 
 
 or You can Launch Gazebo House:
@@ -188,7 +188,7 @@ or You can Launch Gazebo House:
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_gazebo fortyfive_robot_house.launch
 ```
-![Image of Gazebo House](url)
+![Image of Gazebo House](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/gazebo_house.png)
 
 ####3.2.2 Run SLAM Nodes [Simulation]
 On your Remote PC open a new terminal and run following commands.
@@ -196,7 +196,7 @@ On your Remote PC open a new terminal and run following commands.
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_slam fortyfive_robot_slam.launch slam_methods:=gmapping
 ```
-![Image of SLAM](url)
+![Image of SLAM](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/mapping.png)
 
 ### 3.2.3 Control Robot over Terminal [Simulation]
 On new terminal and run following commands.
@@ -236,7 +236,7 @@ Click the 2D Nav Goal button.
 Click on a specific point in the map to set a goal position and drag the cursor to the direction where TurtleBot should be facing at the end.
 The robot will create a path to avoid obstacles to its destination based on the map. Then, the robot moves along the path. At this time, even if an obstacle is suddenly detected, the robot moves to the target point avoiding the obstacle.
 
-![Image of Navigation Goal](url)
+![Image of Navigation Goal](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/navigation.png)
 
 
 ### 5.1 Install RealSense ROS Package:
