@@ -12,12 +12,12 @@ Changelog for package fortyfive_robot_slam
 
 1.2.1 (2019-08-20)
 ------------------
-* Fixed ROS_ASSERT bug `#416 <https://github.com/ROBOTIS-GIT/turtlebot3/issues/416>`_
+* Fixed ROS_ASSERT bug `#416 <https://github.com/ROBOTIS-GIT/fortyfive_robot/issues/416>`_
 * Contributors: ant, Ryan Shim, Kayman
 
 1.2.0 (2019-01-22)
 ------------------
-* modified rosdep `#342 <https://github.com/ROBOTIS-GIT/turtlebot3/issues/342>`_
+* modified rosdep `#342 <https://github.com/ROBOTIS-GIT/fortyfive_robot/issues/342>`_
 * Contributors: Steven Macenski, Darby Lim
 
 1.1.0 (2018-07-23)
@@ -33,7 +33,7 @@ Changelog for package fortyfive_robot_slam
 * added karto SLAM
 * added frontier_exploration
 * added launch files to run various SLAMs
-* modified pull request `#220 <https://github.com/ROBOTIS-GIT/turtlebot3/issues/220>`_ `#219 <https://github.com/ROBOTIS-GIT/turtlebot3/issues/219>`_ `#215 <https://github.com/ROBOTIS-GIT/turtlebot3/issues/215>`_ `#212 <https://github.com/ROBOTIS-GIT/turtlebot3/issues/212>`_ `#202 <https://github.com/ROBOTIS-GIT/turtlebot3/issues/202>`_ `#154 <https://github.com/ROBOTIS-GIT/turtlebot3/issues/154>`_ `#153 <https://github.com/ROBOTIS-GIT/turtlebot3/issues/153>`_ `#147 <https://github.com/ROBOTIS-GIT/turtlebot3/issues/147>`_ `#146 <https://github.com/ROBOTIS-GIT/turtlebot3/issues/146>`_ `#145 <https://github.com/ROBOTIS-GIT/turtlebot3/issues/145>`_
+* modified pull request `#220 <https://github.com/ROBOTIS-GIT/fortyfive_robot/issues/220>`_ `#219 <https://github.com/ROBOTIS-GIT/fortyfive_robot/issues/219>`_ `#215 <https://github.com/ROBOTIS-GIT/fortyfive_robot/issues/215>`_ `#212 <https://github.com/ROBOTIS-GIT/fortyfive_robot/issues/212>`_ `#202 <https://github.com/ROBOTIS-GIT/fortyfive_robot/issues/202>`_ `#154 <https://github.com/ROBOTIS-GIT/fortyfive_robot/issues/154>`_ `#153 <https://github.com/ROBOTIS-GIT/fortyfive_robot/issues/153>`_ `#147 <https://github.com/ROBOTIS-GIT/fortyfive_robot/issues/147>`_ `#146 <https://github.com/ROBOTIS-GIT/fortyfive_robot/issues/146>`_ `#145 <https://github.com/ROBOTIS-GIT/fortyfive_robot/issues/145>`_
 * Contributors: Darby Lim, ncnynl, Pyo
 
 0.2.1 (2018-03-14)
