@@ -1,3 +1,4 @@
+<!-- This File is in charge of communication with OpenCR, the controller of the Robot -->
 <launch>
   <arg name="multi_robot_name" default=""/>
 
