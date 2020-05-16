@@ -86,10 +86,9 @@ Initialize a Workspace Folder:
 ```$ cd ~
 $ git clone https://github.com/CS45-FortyFive/FortyFive-Robot_ws.git
 $ cd  ~/FortyFive-Robot_ws
-$ catkin_init_workspace
 $ catkin_make
-$ echo "source ~/FortyFive-Robot_ws/devel/setup.bash" >> ~/.bashrc # Adds workspace to search path
 $ echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+$ echo "source ~/FortyFive-Robot_ws/devel/setup.bash" >> ~/.bashrc # Adds workspace to search path
 $ source ~/.bashrc
 ```
 
