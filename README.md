@@ -1,3 +1,12 @@
+## Project Description
+With the rise of online shopping, it is becoming more and more important to be able to organize warehouses. Lost packages have become a large problem as employees have misplaced many packages due to the mistakes of poor organization.
+
+This project is aiming to solve this problem by being able to track the location of packages. In order to do this, our robot will:
+* Be able to travel and navigate a warehouse
+* Create a virtual map of its surroundings.
+* Detect and avoid moving obstacles such as people.
+* Detect and recognize barcodes on packages.
+* Log and keep track of the movements of packages. 
 
 ## Hardware
 * TurtleBot 3 - Waffle
