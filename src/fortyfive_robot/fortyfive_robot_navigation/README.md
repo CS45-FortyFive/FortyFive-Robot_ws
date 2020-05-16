@@ -2,7 +2,7 @@
 
 /launch/amcl.launch
 
-![Image of AMCL](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/Amcl-map-localization.png)
+![Image of AMCL](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/Amcl-map-localization.png)
 
 Amcl is a probabilistic localization system for a robot moving in 2D.
 It implements the adaptive Monte Carlo localization approach , which uses a

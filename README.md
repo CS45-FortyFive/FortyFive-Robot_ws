@@ -162,7 +162,7 @@ On your Laptop run following command on your terminal to simulate robot on Rviz.
 ```
 $ roslaunch fortyfive_robot_fake fortyfive_robot_fake.launch
 ```
-![Image of BringUp](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/bringup_robot.png)
+![Image of BringUp](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/bringup_robot.png)
 ### 2.1.2 Wake Up The Robot
 ##### Run following command on your terminal [Laptop]
 
@@ -245,7 +245,7 @@ You can launch the Gazebo World:
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_gazebo fortyfive_robot_world.launch
 ```
-![Image of Gazebo World](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/gazebo_world.png)
+![Image of Gazebo World](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/gazebo_world.png)
 
 
 or You can Launch Gazebo House:
@@ -253,7 +253,7 @@ or You can Launch Gazebo House:
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_gazebo fortyfive_robot_house.launch
 ```
-![Image of Gazebo House](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/gazebo_house.png)
+![Image of Gazebo House](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/gazebo_house.png)
 
 ### 3.1.2 Run SLAM Nodes [Simulation]
 On your Laptop open a new terminal and run following commands.
@@ -261,7 +261,7 @@ On your Laptop open a new terminal and run following commands.
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_slam fortyfive_robot_slam.launch slam_methods:=gmapping
 ```
-![Image of SLAM](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/mapping.png)
+![Image of SLAM](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/mapping.png)
 
 ### 3.1.3 Control Robot over Terminal [Simulation]
 On new terminal and run following commands.
@@ -269,7 +269,7 @@ On new terminal and run following commands.
 $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_teleop fortyfive_robot_teleop_key.launch
 ```
-![Gif of SLAM](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/slam2.gif)
+![Gif of SLAM](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/slam2.gif)
 ### 3.1.4 Save SLAM Map [Simulation]
 On your Laptop run following command to save the map created by gmapping.
 
@@ -308,7 +308,7 @@ space key, s : force stop
 
 CTRL-C to quit
 ```
-![Gif of teleop](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/teleop.gif)
+![Gif of teleop](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/teleop.gif)
 
 Now you can control the robot with your keyboard. Press W to move Forward. X to go backwards. A to turn left and D to turn right. Pressing S will stop the movement of the Robot.
 
@@ -350,13 +350,13 @@ $ roslaunch fortyfive_robot_navigation fortyfive_robot_navigation.launch map_fil
 
 Press 2D Nav Goal in the menu of RViz, a very large green arrow appears. This green arrow is a marker that can specify the destination of the robot. The root of the arrow is the x and y position of the robot, and the orientation pointed by the arrow is the theta direction of the robot. Click this arrow at the position where the robot will move, and drag it to set the orientation like the instruction below.
 
-![Gif of Navigation Position](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/pos_estimate.gif)
+![Gif of Navigation Position](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/pos_estimate.gif)
 
 Click the 2D Nav Goal button.
 Click on a specific point in the map to set a goal position and drag the cursor to the direction where TurtleBot should be facing at the end.
 The robot will create a path to avoid obstacles to its destination based on the map. Then, the robot moves along the path. At this time, even if an obstacle is suddenly detected, the robot moves to the target point avoiding the obstacle.
 
-![Gif of Navigation](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/navigation.gif)
+![Gif of Navigation](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/navigation.gif)
 
 ## 5 3-D Mapping with Intel® RealSense™ D410
 ### 5.1 Install RealSense ROS Package:
@@ -555,17 +555,17 @@ $ roslaunch visp_tracker tutorial.launch
 ```
 
 You should see this screen:
-![Image of Barcode Test1](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/barcode1.png)
+![Image of Barcode Test1](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/barcode1.png)
 
 And after validation you should see:
 
-![Image of Barcode Test2](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/barcode2.png)
+![Image of Barcode Test2](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/barcode2.png)
 
 
 You can test your installation on Pre-Recorded Video:
 
 You should see the object position from QR Code
-![Image of Barcode Test3](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/barcode3.png)
+![Image of Barcode Test3](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/barcode3.png)
 
 #### 7.2 Calibrate the Camera
 For calibrating camera we will use `visp_camera_calibration`.
@@ -577,7 +577,7 @@ Run Following command on terminal to start calibration:
 roslaunch visp_camera_calibration lagadic_grid.launch
 ```
 
-![Gif of calibration](https://github.com/CS45-FortyFive/FortyFive-Robot_ws/blob/master/images_videos/barcode_calib.gif)
+![Gif of calibration](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/barcode_calib.gif)
 
 Start clicking the numbered circles liked showed on the gif.
 when you done with selecting 1 to 4. The image processing interface will try to detect the rest of the points for you.
