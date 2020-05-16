@@ -663,3 +663,29 @@ $ roslaunch rtabmap_ros rtabmap.launch \
  rtabmap_args `"--delete_db_on_start" ` used for starting mapping from a clean database.
 
  The map will be saved to `~/.ros/rtabmap.db`
+
+### Code Review Corrections
+
+	Most of the code review were concerned with our lack of organized code we presented and how it could not be tested. 
+In order to organize our code, we have streamlined the code onto our GitHub Repo. 
+We added as much as possible and tried to make it as executable as possible without the robot.
+Comments were also added into many files we changed to make it more understandable.
+We recived comments that they were unable to see what code we have written, but these are changes within each file.
+For complains where there were no unit tests and no executable code, we have also added instructions for the user to test as much of the code as possible. 
+While not all of the functions of the robot could be displayed, such as the RealSense Camera, we are showing as much code as possible.
+For unit tests, much of the code was provided has been divided into different functions of the robot.
+Detailed accounts of the code reviews can be seen above.
+
+### Missed Requirements
+
+	Unfortunately, we were unable to connect the barcode reader to the mapping functions due to a lack of time. 
+They are able to work individually, but we did not have the time to connect them to each other. 
+Originally, the robot was going to read barcodes with the barcode reading program and inform the mapping program to place a waypoint at the barcode's position.
+We were unable to complete this requirement because there were many problems due to remote learning. 
+The main problem was that only one person was able to work on the robot at a time as we exchanged possession of the robot to implement code.
+We were also unable to meet regularly and there were many problems with communication.
+	
+	
+	
+	
+	
