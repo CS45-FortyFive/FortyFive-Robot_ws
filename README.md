@@ -88,7 +88,7 @@ $ git clone https://github.com/CS45-FortyFive/FortyFive-Robot_ws.git
 $ cd  ~/FortyFive-Robot_ws
 $ catkin_init_workspace
 $ catkin_make
-$ echo "source ~/FortyFive-Robot_ws/devel/setup.bash" >> ~/.bashrc # Adds workspace to search path]
+$ echo "source ~/FortyFive-Robot_ws/devel/setup.bash" >> ~/.bashrc # Adds workspace to search path
 $ echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 $ source ~/.bashrc
 ```
@@ -262,6 +262,18 @@ $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_slam fortyfive_robot_slam.launch slam_methods:=gmapping
 ```
 ![Image of SLAM](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/mapping.png)
+
+If you receive this error:
+```
+[fortyfive_robot_slam.launch] is neither a launch file in package [fortyfive_robot_slam] nor is [fortyfive_robot_slam] a launch file name
+The traceback for the exception was written to the log file
+```
+
+Run Following command and try again:
+```
+source ~/FortyFive-Robot_ws/devel/setup.bash
+```
+
 
 ### 3.1.3 Control Robot over Terminal [Simulation]
 On new terminal and run following commands.
