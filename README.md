@@ -171,6 +171,16 @@ On your Laptop run following command on your terminal to simulate robot on Rviz.
 $ roslaunch fortyfive_robot_fake fortyfive_robot_fake.launch
 ```
 ![Image of BringUp](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/bringup_robot.png)
+
+If you see the error: 
+```
+[fortyfive_robot_fake.launch] is neither a launch file in package [fortyfive_robot_fake] nor is [fortyfive_robot_fake] a launch file name
+The traceback for the exception was written to the log file
+```
+Run the command:
+```
+$ source ~/FortyFive-Robot_ws/devel/setup.bash
+```
 ### 2.1.2 Wake Up The Robot
 ##### Run following command on your terminal [Laptop]
 
