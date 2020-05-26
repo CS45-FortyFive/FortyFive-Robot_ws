@@ -368,7 +368,7 @@ $ export FORTYFIVE_ROBOT_MODEL=waffle
 $ roslaunch fortyfive_robot_navigation fortyfive_robot_navigation.launch map_file:=$HOME/map.yaml
 ```
 
-Press 2D Nav Goal in the menu of RViz, a very large green arrow appears. This green arrow is a marker that can specify the destination of the robot. The root of the arrow is the x and y position of the robot, and the orientation pointed by the arrow is the theta direction of the robot. Click this arrow at the position where the robot will move, and drag it to set the orientation like the instruction below.
+Press 2D Pose Estimate in the menu of RViz, a very large green arrow appears. This green arrow is a marker that can specify the destination of the robot. The root of the arrow is the x and y position of the robot, and the orientation pointed by the arrow is the theta direction of the robot. Click this arrow at the position where the robot will move, and drag it to set the orientation like the instruction below.
 
 ![Gif of Navigation Position](https://github.com/sasmazonur/Capstone_Pictures_Gifs/blob/master/images_videos/pos_estimate.gif)
 
@@ -438,7 +438,7 @@ $ roslaunch realsense2_camera rs_camera.launch
 ```
 
 ### 5.3 SLAM with Intel® RealSense™
-##### Run the camera Node [Laptop]:
+##### Run the camera Node [Robot]:
 ```
 $ roslaunch realsense2_camera rs_rgbd.launch
 ```
